@@ -7,4 +7,4 @@ Criminal is a podcast about crime. Not so much the "if it bleeds, it leads," kin
 
 www.thisiscriminal.com
 
-<a><img href="https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fboxoffice.hotdocs.ca%2Fimages%2Fuser%2Fbc_2338%2FCriminal_podcast_2.jpg&f=1"></a>
+<a href="https://www.thisiscriminal.co,"><img src="https://thisiscriminal.com/wp-content/themes/criminal-theme/assets/images/Criminal_SocialShare_1.png" alt="Criminal podcast">
