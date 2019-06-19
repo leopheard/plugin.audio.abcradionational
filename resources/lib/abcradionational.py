@@ -12,7 +12,7 @@ def get_soup(url):
     print "type: ", type(soup)
     return soup
 
-get_soup("http://abc.net.au/radionational/podcasts")
+get_soup("http://feeds.thisiscriminal.com/CriminalShow")
 
 def get_playable_podcast(soup):
     """
@@ -20,31 +20,36 @@ def get_playable_podcast(soup):
     """
     subjects = []
 
-    for content in soup.find_all('div', class_= "cs-teaser"):
+    for content in soup.find_all():
+    #for content in soup.find_all('channel'):
         
         try:        
-            link = content.find('a', {'class': 'ico ico-download'})
-            link = link.get('href')
-            print "\n\nLink: ", link
+            link = content.find('enclosure')
+            link = link.get('url')
+            print "Link: ", link
 
-            title = content.find('h3', {'class': 'title'})
+#            title = content.find('item')
+#<item><guid isPermaLink="false"> == is causing doubling of first episode
+            title = content.find('title')
             title = title.get_text()
 
-            desc = content.find('div', {'class': 'summary'})
+            desc = content.find('itunes:subtitle')
             desc = desc.get_text()
             
-     
-            thumbnail = content.find('img')
+            #thumbnail = content.find('itunes:image')
+            #thumbnail = thumbnail.get('href')
+
+            thumbnail = content.find('image')
             thumbnail = thumbnail.get('src')
+
         except AttributeError:
             continue
-       
-       
+              
         item = {
                 'url': link,
                 'title': title,
-                'desc': desc,
-                'thumbnail': thumbnail
+                #'desc': desc,
+                #'thumbnail': thumbnail
         }
         
         #needto check that item is not null here
@@ -52,25 +57,37 @@ def get_playable_podcast(soup):
     
     return subjects
 
-
 def get_podcast_heading(soup):
     """
     @para: parsed html page
     """
     subjects = []
     
-    for content in soup.find_all('div', class_= 'header'):    
+    for content in soup.find_all('channel'):    
         
-        link = content.find('a')
-        link = link.get('href')
-        link = "http://abc.net.au" + link 
+        link = content.find('enclosure')
+        link = link.get('url')
+        link = "http://feeds.thisiscriminal.com/CriminalShow"
 
-        title = content.find('h3')
+#        title = content.find('item', {'title'})
+#<item><guid isPermaLink="false"> == is causing doubling of first episode
+        title = content.find('title')
         title = title.get_text()
+
+        desc = content.find('itunes:subtitle')
+        desc = desc.get_text()
+
+        #thumbnail = content.find('itunes:image')
+        #thumbnail = thumbnail.get('href')
+
+        thumbnail = content.find('image')
+        thumbnail = thumbnail.get('src')
         
         item = { 
                 'url': link,
                 'title': title
+                #'desc': desc, THESE MESS IT UP
+                #'thumbnail': thumbnail THESE MESS IT UP
         }
 
         subjects.append(item)
@@ -87,9 +104,9 @@ def compile_playable_podcast(playable_podcast):
     for podcast in playable_podcast:
         items.append({
             'label': podcast['title'],
-            'thumbnail': podcast['thumbnail'],
+            #'thumbnail': podcast['thumbnail'],
             'path': podcast['url'],
-            'info': podcast['desc'],
+            #'info': podcast['desc'],
             'is_playable': True,
     })
 
