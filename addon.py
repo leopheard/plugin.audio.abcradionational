@@ -1,3 +1,6 @@
+#criminal podcast
+#criminal show
+#this is criminal
 from xbmcswift2 import Plugin, xbmcgui
 from resources.lib import thisiscriminal
 
