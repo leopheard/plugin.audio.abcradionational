@@ -1,4 +1,4 @@
-plugin.audio.thisiscriminal
+Criminal podcast
 =============================
 
 KODI / XBMC addon for the audio podcast 'Criminal' from NPR / PRX
