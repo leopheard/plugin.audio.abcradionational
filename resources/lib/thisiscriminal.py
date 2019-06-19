@@ -21,16 +21,15 @@ def get_playable_podcast(soup):
     subjects = []
 
     for content in soup.find_all():
-    #for content in soup.find_all('channel'):
         
         try:        
             link = content.find('enclosure')
             link = link.get('url')
-            print "Link: ", link
+            print "\n\nLink: ", link
 
-#            title = content.find('item')
-#<item><guid isPermaLink="false"> == is causing doubling of first episode
             title = content.find('title')
+            #<item><guid isPermaLink="false"> == is causing doubling of first episode
+            #title = content.find('title')
             title = title.get_text()
 
             desc = content.find('itunes:subtitle')
@@ -39,8 +38,11 @@ def get_playable_podcast(soup):
             #thumbnail = content.find('itunes:image')
             #thumbnail = thumbnail.get('href')
 
-            thumbnail = content.find('image')
-            thumbnail = thumbnail.get('src')
+            #thumbnail = content.find('image')
+            #thumbnail = thumbnail.get('src')
+
+            #thumbnail = content.find('image')
+            #thumbnail = thumbnail.get('/resources/media/cropped-favicon-2-32x32.png')
 
         except AttributeError:
             continue
@@ -48,7 +50,7 @@ def get_playable_podcast(soup):
         item = {
                 'url': link,
                 'title': title,
-                #'desc': desc,
+                'desc': desc,
                 #'thumbnail': thumbnail
         }
         
@@ -57,17 +59,18 @@ def get_playable_podcast(soup):
     
     return subjects
 
+
 def get_podcast_heading(soup):
     """
     @para: parsed html page
     """
     subjects = []
     
-    for content in soup.find_all('channel'):    
+    for content in soup.find_all():    
         
         link = content.find('enclosure')
         link = link.get('url')
-        link = "http://feeds.thisiscriminal.com/CriminalShow"
+        print "\n\nLink: ", link
 
 #        title = content.find('item', {'title'})
 #<item><guid isPermaLink="false"> == is causing doubling of first episode
@@ -80,8 +83,11 @@ def get_podcast_heading(soup):
         #thumbnail = content.find('itunes:image')
         #thumbnail = thumbnail.get('href')
 
-        thumbnail = content.find('image')
-        thumbnail = thumbnail.get('src')
+        #thumbnail = content.find('image')
+        #thumbnail = thumbnail.get('src')
+
+        #thumbnail = content.find('image')
+        #thumbnail = thumbnail.get('/resources/media/cropped-favicon-2-32x32.png')
         
         item = { 
                 'url': link,
