@@ -23,8 +23,8 @@
     <website></website>
     <audio_guide></audio_guide>
         	<assets>
-			<icon>icon.png</icon>
-			<fanart>fanart.jpg</fanart>
+			<icon>resources/media/icon.png</icon>
+			<fanart>resources/media/fanart.jpg</fanart>
 			<screenshot>resources/media/icon.png</screenshot>
 			<screenshot>resources/media/icon.png</screenshot>
 			<screenshot>resources/media/icon.png</screenshot>
