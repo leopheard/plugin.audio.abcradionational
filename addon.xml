@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.audio.abcradionational" name="ABC Radio National" version="1.1.0" provider-name="Damon Toumbourou">
+<addon id="plugin.audio.thisiscriminal" name="Criminal Podcast" version="1.0." provider-name="Leo Edwards">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
     <import addon="script.module.xbmcswift2" version="2.4.0"/>
@@ -12,14 +12,22 @@
   <extension point="xbmc.addon.metadata">
     <platform>all</platform>
     <language></language>
-    <summary lang="en">Listen to podcasts from the ABC Radio National network.
+    <summary lang="en">Criminal podcast from WUNC / NPR
     </summary>
-    <description lang="en">Radio National's vision and purpose is to nurture the intellectual and cultural life of this country, and to be a vital element of the contemporary Australian conversation. Radio National's vision and purpose is to nurture the intellectual and cultural life of this country, and to be a vital element of the contemporary Australian conversation.
+    <description lang="en">Stories of people who’ve done wrong, been wronged, or gotten caught somewhere in the middle.
     </description>
     <license>The MIT License (MIT)</license>
-    <forum>http://forum.xbmc.org/showthread.php?tid=184904</forum>
-    <email>dtoumbourou@gmail.com</email>
-    <source>https://github.com/DamonToumbourou/plugin.audio.abcradionational.git</source>
+    <forum>http://forum.xbmc.org/showthread - link here</forum>
+    <email>leopheard@gmail.com</email>
+    <source>https://github.com/leopheard/plugin.audio.thisiscriminal.git</source>
     <website></website>
+    <audio_guide></audio_guide>
+        	<assets>
+			<icon>icon.png</icon>
+			<fanart>fanart.jpg</fanart>
+			<screenshot>resources/media/icon.png</screenshot>
+			<screenshot>resources/media/icon.png</screenshot>
+			<screenshot>resources/media/icon.png</screenshot>
+		</assets>
   </extension>
 </addon>
