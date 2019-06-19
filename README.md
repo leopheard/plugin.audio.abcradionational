@@ -1,7 +1,4 @@
-plugin.audio.abcradionational
+plugin.audio.thisiscriminal
 =============================
 
-[![Build Status](https://travis-ci.org/DamonToumbourou/plugin.audio.abcradionational.svg?branch=master)](https://travis-ci.org/DamonToumbourou/plugin.audio.abcradionational)
-
-XBMC addon for audio podcasts from ABC Radio National 
-
+KODI / XBMC addon for the audio podcast 'Criminal' from NPR / PRX
