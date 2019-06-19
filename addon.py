@@ -1,12 +1,10 @@
 from xbmcswift2 import Plugin, xbmcgui
-from resources.lib import abcradionational
-
+from resources.lib import thisiscriminal
 
 plugin = Plugin()
 
 # base url for fetching podcasts 
-URL = "http://abc.net.au/radionational"
-
+URL = "http://feeds.thisiscriminal.com/CriminalShow"
 
 @plugin.route('/')
 def main_menu():
@@ -14,23 +12,23 @@ def main_menu():
     main menu 
     """
     items = [
-        {
-            'label': plugin.get_string(30000), 
-            'path': "http://www.abc.net.au/radio/stations/RN/live?play=true",
-            'thumbnail': "http://www.abc.net.au/local/global_img/programs/howtolisten.jpg", 
-            'is_playable': True},
+#        {
+#            'label': plugin.get_string(30000), 
+#            'path': "http://www.abc.net.au/radio/stations/RN/live?play=true",
+#            'thumbnail': "http://www.abc.net.au/local/global_img/programs/howtolisten.jpg", 
+#            'is_playable': True},
         {
             'label': plugin.get_string(30001), 
             'path': plugin.url_for('just_in'),
-            'thumbnail': "https://pbs.twimg.com/profile_images/470802028856213504/A4Dg37Ey_400x400.jpeg"},
-        {
-            'label': plugin.get_string(30002), 
-            'path': plugin.url_for('subject_list'),
-            'thumbnail': "https://pbs.twimg.com/profile_images/470802028856213504/A4Dg37Ey_400x400.jpeg"},
-        {
-            'label': plugin.get_string(30003),
-            'path': plugin.url_for('program_list'),
-            'thumbnail': "https://pbs.twimg.com/profile_images/470802028856213504/A4Dg37Ey_400x400.jpeg"},
+            'thumbnail': "http://paperandfox.com/wp-content/uploads/2014/12/Criminal_Podcast_Logo_medium.jpg"},
+#        {
+#            'label': plugin.get_string(30002), 
+#            'path': plugin.url_for('subject_list'),
+#            'thumbnail': "https://pbs.twimg.com/profile_images/470802028856213504/A4Dg37Ey_400x400.jpeg"},
+#        {
+#            'label': plugin.get_string(30003),
+#            'path': plugin.url_for('program_list'),
+#            'thumbnail': "https://pbs.twimg.com/profile_images/470802028856213504/A4Dg37Ey_400x400.jpeg"},
     ]
 
     return items
@@ -41,12 +39,11 @@ def just_in():
     """
     contains playable podcasts listed as just-in
     """
-    soup = abcradionational.get_soup(URL + "/podcasts")
+    soup = thisiscriminal.get_soup(URL)
     
-    playable_podcast = abcradionational.get_playable_podcast(soup)
+    playable_podcast = thisiscriminal.get_playable_podcast(soup)
     
-    items = abcradionational.compile_playable_podcast(playable_podcast)
-
+    items = thisiscriminal.compile_playable_podcast(playable_podcast)
 
     return items
 
@@ -58,9 +55,9 @@ def subject_list():
     """
     items = []
 
-    soup = abcradionational.get_soup(URL + "/podcasts/subjects")
+    soup = thisiscriminal.get_soup(URL)
     
-    subject_heading = abcradionational.get_podcast_heading(soup)
+    subject_heading = thisiscriminal.get_podcast_heading(soup)
     
     for subject in subject_heading:
         items.append({
@@ -76,12 +73,11 @@ def subject_item(url):
     """
     contains the playable podcasts for subjects
     """
-    soup = abcradionational.get_soup(url)
+    soup = thisiscriminal.get_soup(url)
     
-    playable_podcast = abcradionational.get_playable_podcast(soup)
+    playable_podcast = thisiscriminal.get_playable_podcast(soup)
 
-    items = abcradionational.compile_playable_podcast(playable_podcast)
-
+    items = thisiscriminal.compile_playable_podcast(playable_podcast)
 
     return items
 
@@ -93,9 +89,9 @@ def program_list():
     """
     items = []
 
-    soup = abcradionational.get_soup(URL + "/podcasts/program")
+    soup = thisiscriminal.get_soup(URL + "/podcasts/program")
     
-    program_heading = abcradionational.get_podcast_heading(soup)
+    program_heading = thisiscriminal.get_podcast_heading(soup)
 
     for program in program_heading:
         items.append({
@@ -113,11 +109,11 @@ def program_item(url):
     """
     items = []
     
-    soup = abcradionational.get_soup(url)
+    soup = thisiscriminal.get_soup(url)
 
-    playable_podcast = abcradionational.get_playable_podcast(soup)
+    playable_podcast = thisiscriminal.get_playable_podcast(soup)
 
-    items = abcradionational.compile_playable_podcast(playable_podcast)
+    items = thisiscriminal.compile_playable_podcast(playable_podcast)
 
     return items
 
