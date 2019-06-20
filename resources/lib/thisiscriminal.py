@@ -20,7 +20,7 @@ def get_playable_podcast(soup):
     """
     subjects = []
 
-    for content in soup.find_all():
+    for content in soup.find_all('item'):
         
         try:        
             link = content.find('enclosure')
@@ -28,16 +28,11 @@ def get_playable_podcast(soup):
             print "\n\nLink: ", link
 
             title = content.find('title')
-            #<item><guid isPermaLink="false"> == is causing doubling of first episode
-            #title = content.find('title')
             title = title.get_text()
 
             desc = content.find('itunes:subtitle')
             desc = desc.get_text()
             
-            #thumbnail = content.find('itunes:image')
-            #thumbnail = thumbnail.get('href')
-
             #thumbnail = content.find('image')
             #thumbnail = thumbnail.get('src')
 
@@ -66,22 +61,17 @@ def get_podcast_heading(soup):
     """
     subjects = []
     
-    for content in soup.find_all():    
+    for content in soup.find_all('item'):    
         
         link = content.find('enclosure')
         link = link.get('url')
         print "\n\nLink: ", link
 
-#        title = content.find('item', {'title'})
-#<item><guid isPermaLink="false"> == is causing doubling of first episode
         title = content.find('title')
         title = title.get_text()
 
         desc = content.find('itunes:subtitle')
         desc = desc.get_text()
-
-        #thumbnail = content.find('itunes:image')
-        #thumbnail = thumbnail.get('href')
 
         #thumbnail = content.find('image')
         #thumbnail = thumbnail.get('src')
@@ -91,9 +81,9 @@ def get_podcast_heading(soup):
         
         item = { 
                 'url': link,
-                'title': title
-                #'desc': desc, THESE MESS IT UP
-                #'thumbnail': thumbnail THESE MESS IT UP
+                'title': title,
+                #'desc': desc,
+                #'thumbnail': thumbnail
         }
 
         subjects.append(item)
