@@ -2,5 +2,6 @@
 <strings>
   <!-- Plugin name -->
   <string id="30000">Latest episode</string>
-  <string id="30001">Criminal podcast</string>
+  <string id="30001">All Criminal episodes</string>
+  <string id="30002">New to Criminal? Start here</string>
 </strings>
